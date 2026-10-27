@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Monthly Recovery | SocietyDesk{% endblock %}{% block page_heading %}Monthly Recovery{% endblock %}
+{% block content %}
+<div class="page-intro"><div><h2>Monthly recovery entry</h2><p>One form to capture a member's monthly payment.</p></div><span class="count-pill">{{ recoveries|length }} entry/entries</span></div>
+<section class="panel"><p class="form-note"><strong>Demo only:</strong> this stores one draft payment amount. It does not allocate payments across loan principal, interest, deposits, fees or funds, and it does not update cash book or ledgers.</p>
+<div class="panel-heading"><div><h3>Record monthly recovery draft</h3><p>Use a member already in the demo member register.</p></div></div>
+<form method="post" class="form-grid">
+<label>Member<select name="member_id" required><option value="">Select member</option>{% for m in members %}<option value="{{ m.member_id }}">{{ m.member_id }} — {{ m.full_name }}</option>{% endfor %}</select></label>
+<label>Recovery month<input name="month" type="month" required></label>
+<label>Total collected (₹)<input name="amount" type="number" min="0.01" step="0.01" required></label>
+<div><button class="button primary" type="submit">＋ Save recovery draft</button></div>
+</form></section>
+<section class="panel"><div class="panel-heading"><div><h3>Recovery entries</h3><p>Not a receipt; no financial posting has occurred.</p></div></div><div class="table-wrap"><table><thead><tr><th>Reference</th><th>Member</th><th>Month</th><th>Amount</th><th>Entry date</th><th>Status</th></tr></thead><tbody>{% for x in recoveries %}<tr><td class="mono">{{ x.receipt_id }}</td><td>{{ x.member_id }} — {{ x.member_name }}</td><td>{{ x.month }}</td><td class="number-cell">₹{{ x.amount }}</td><td>{{ x.date }}</td><td><span class="tag planned">{{ x.status }}</span></td></tr>{% else %}<tr><td colspan="6" class="data-empty">No recovery drafts added yet.</td></tr>{% endfor %}</tbody></table></div></section>
+{% endblock %}
