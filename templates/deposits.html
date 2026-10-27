@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Deposits & Funds | SocietyDesk{% endblock %}{% block page_heading %}Deposits & Welfare Funds{% endblock %}
+{% block content %}
+<div class="page-intro"><div><h2>Deposit and fund register</h2><p>Thrift, RD, FD and member welfare fund draft entries.</p></div><span class="count-pill">{{ deposits|length }} record(s)</span></div>
+<section class="panel"><p class="form-note"><strong>Demo only:</strong> interest, maturity, refunds and nominee/death benefits are not calculated or paid. Approved society rules must be confirmed before implementing these calculations.</p>
+<div class="panel-heading"><div><h3>Add deposit or fund draft</h3><p>Choose a member and record a sample amount.</p></div></div>
+<form method="post" class="form-grid">
+<label>Member<select name="member_id" required><option value="">Select member</option>{% for m in members %}<option value="{{ m.member_id }}">{{ m.member_id }} — {{ m.full_name }}</option>{% endfor %}</select></label>
+<label>Type<select name="deposit_type" required><option value="">Select type</option><option>Thrift</option><option>Recurring Deposit (RD)</option><option>Fixed Deposit (FD)</option><option>Benevolent Fund</option><option>Family Welfare Fund</option></select></label>
+<label>Amount (₹)<input name="amount" type="number" min="0.01" step="0.01" required></label>
+<label>Annual interest rate (%)<input name="rate" type="number" min="0" max="100" step="0.01" required></label>
+<div><button class="button primary" type="submit">＋ Save deposit draft</button></div>
+</form></section>
+<section class="panel"><div class="panel-heading"><div><h3>Deposit and fund list</h3><p>Draft records only; no interest is posted.</p></div></div><div class="table-wrap"><table><thead><tr><th>Record ID</th><th>Member</th><th>Type</th><th>Amount</th><th>Rate</th><th>Date</th><th>Status</th></tr></thead><tbody>{% for x in deposits %}<tr><td class="mono">{{ x.deposit_id }}</td><td>{{ x.member_id }} — {{ x.member_name }}</td><td>{{ x.deposit_type }}</td><td class="number-cell">₹{{ x.amount }}</td><td>{{ x.rate }}%</td><td>{{ x.date }}</td><td><span class="tag planned">{{ x.status }}</span></td></tr>{% else %}<tr><td colspan="7" class="data-empty">No demo deposits or funds added yet.</td></tr>{% endfor %}</tbody></table></div></section>
+{% endblock %}
