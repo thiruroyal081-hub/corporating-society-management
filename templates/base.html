@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Cooperative Society{% endblock %}</title>
+  <title>{% block title %}Dashboard | SocietyDesk{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <aside class="sidebar">
-    <div class="brand"><span class="brand-mark">CS</span><span>Society<span class="brand-muted">Desk</span></span></div>
+    <a class="brand" href="{{ url_for('dashboard') }}"><span class="brand-mark">CS</span><span>Society<span class="brand-muted">Desk</span></span></a>
     <p class="nav-label">WORKSPACE</p>
     <a class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}" href="{{ url_for('dashboard') }}">▦ <span>Dashboard</span></a>
     <a class="nav-link {% if request.endpoint == 'member_list' %}active{% endif %}" href="{{ url_for('member_list') }}">♙ <span>Members</span></a>
-    <div class="nav-link disabled" title="Planned module">₹ <span>Loans</span><small>Planned</small></div>
-    <div class="nav-link disabled" title="Planned module">▤ <span>Deposits & Funds</span><small>Planned</small></div>
-    <div class="nav-link disabled" title="Planned module">⇄ <span>Monthly Recovery</span><small>Planned</small></div>
-    <div class="nav-link disabled" title="Planned module">▥ <span>Accounting & Reports</span><small>Planned</small></div>
+    <a class="nav-link {% if request.endpoint == 'loan_list' %}active{% endif %}" href="{{ url_for('loan_list') }}">₹ <span>Loans</span><small>Demo</small></a>
+    <a class="nav-link {% if request.endpoint == 'deposit_list' %}active{% endif %}" href="{{ url_for('deposit_list') }}">▤ <span>Deposits & Funds</span><small>Demo</small></a>
+    <a class="nav-link {% if request.endpoint == 'recovery_list' %}active{% endif %}" href="{{ url_for('recovery_list') }}">⇄ <span>Monthly Recovery</span><small>Demo</small></a>
+    <a class="nav-link {% if request.endpoint == 'reports' %}active{% endif %}" href="{{ url_for('reports') }}">▥ <span>Reports</span><small>Demo</small></a>
     <div class="sidebar-bottom"><span class="status-dot"></span> Development environment</div>
   </aside>
   <main class="main">
@@ -31,7 +31,7 @@
       {% endif %}
     {% endwith %}
     {% block content %}{% endblock %}
-    <footer>SocietyDesk · Starter build · Do not use for live financial transactions</footer>
+    <footer>SocietyDesk · Development starter · No live accounting or financial posting</footer>
   </main>
 </body>
 </html>
