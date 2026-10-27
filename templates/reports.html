@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Reports | SocietyDesk{% endblock %}{% block page_heading %}Summary Reports{% endblock %}
+{% block content %}
+<div class="page-intro"><div><h2>Demo summary</h2><p>Totals from temporary draft records in this running session.</p></div><span class="count-pill">Not audited</span></div>
+<p class="form-note"><strong>Important:</strong> these are simple demo totals, not a trial balance, profit & loss statement, cash book, audit report or reconciled financial statements. Drafts are not accounting entries.</p>
+<section class="report-grid">
+<article class="stat-card"><div class="report-title">Members in register</div><div class="report-value">{{ member_count }}</div><div class="report-subtitle">Demo member records</div></article>
+<article class="stat-card"><div class="report-title">Loan principal requested</div><div class="report-value">₹{{ "%.2f"|format(total_loan_principal) }}</div><div class="report-subtitle">{{ loans|length }} draft record(s)</div></article>
+<article class="stat-card"><div class="report-title">Deposit/fund amounts entered</div><div class="report-value">₹{{ "%.2f"|format(total_deposits) }}</div><div class="report-subtitle">{{ deposits|length }} draft record(s)</div></article>
+<article class="stat-card"><div class="report-title">Recovery amounts entered</div><div class="report-value">₹{{ "%.2f"|format(total_recoveries) }}</div><div class="report-subtitle">{{ recoveries|length }} draft record(s)</div></article>
+</section>
+<section class="panel"><div class="panel-heading"><div><h3>Available next-stage reports</h3><p>These need a persistent database and validated double-entry posting rules.</p></div></div><div class="module-grid">
+<div class="module-item"><span class="module-symbol">01</span><div><strong>Daily demand and recovery</strong><p>Loan-wise demand, collection and arrears</p></div><span class="tag planned">Planned</span></div>
+<div class="module-item"><span class="module-symbol">02</span><div><strong>Day book / cash book</strong><p>Posted receipts, payments and cash reconciliation</p></div><span class="tag planned">Planned</span></div>
+<div class="module-item"><span class="module-symbol">03</span><div><strong>Trial balance</strong><p>Balanced debits and credits from posted journals</p></div><span class="tag planned">Planned</span></div>
+<div class="module-item"><span class="module-symbol">04</span><div><strong>Profit & loss / audit</strong><p>Financial-year reports checked by the society auditor</p></div><span class="tag planned">Planned</span></div>
+</div></section>
+{% endblock %}
