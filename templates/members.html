@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Members | SocietyDesk{% endblock %}
+{% block page_heading %}Member Master{% endblock %}
+{% block content %}
+<div class="page-intro"><div><h2>Member register</h2><p>Create and search demo member records.</p></div><span class="count-pill">{{ members|length }} result(s)</span></div>
+<section class="panel form-panel">
+  <div class="panel-heading"><div><h3>Register a member</h3><p>Only basic demo fields are enabled in this first version.</p></div></div>
+  <form method="post" action="{{ url_for('add_member') }}" class="member-form">
+    <label>Full name <input name="full_name" maxlength="120" required placeholder="Enter member full name"></label>
+    <label>Mobile number <input name="mobile" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit number"></label>
+    <label>Joining date <input name="join_date" type="date"></label>
+    <div class="form-action"><button class="button primary" type="submit">＋ Add demo member</button></div>
+  </form>
+</section>
+<section class="panel">
+  <div class="panel-heading"><div><h3>Members</h3><p>Search by member ID, name or mobile number.</p></div>
+    <form class="search-form" method="get"><input name="q" value="{{ query }}" placeholder="Search members…"><button class="button secondary" type="submit">Search</button></form>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Member ID</th><th>Full name</th><th>Mobile</th><th>Join date</th><th>Status</th></tr></thead><tbody>
+  {% for member in members %}<tr><td class="mono">{{ member.member_id }}</td><td class="member-name">{{ member.full_name }}</td><td>{{ member.mobile or "—" }}</td><td>{{ member.join_date }}</td><td><span class="status-active">{{ member.status }}</span></td></tr>
+  {% else %}<tr><td colspan="5" class="empty-state">No members found. Try another search or add a demo member.</td></tr>{% endfor %}
+  </tbody></table></div>
+</section>
+{% endblock %}
