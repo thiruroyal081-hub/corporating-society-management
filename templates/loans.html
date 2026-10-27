@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Loans | SocietyDesk{% endblock %}{% block page_heading %}Loan Register{% endblock %}
+{% block content %}
+<div class="page-intro"><div><h2>Loan records</h2><p>Short-, medium- and long-term draft records.</p></div><span class="count-pill">{{ loans|length }} record(s)</span></div>
+<section class="panel"><p class="form-note"><strong>Demo only:</strong> this form does not sanction a loan or calculate EMI/interest, share capital deductions, fees, repayments, or journal entries. Values are temporary.</p>
+<div class="panel-heading"><div><h3>Add loan draft</h3><p>Register a sample loan request against an existing member.</p></div></div>
+<form method="post" class="form-grid">
+<label>Member<select name="member_id" required><option value="">Select member</option>{% for m in members %}<option value="{{ m.member_id }}">{{ m.member_id }} — {{ m.full_name }}</option>{% endfor %}</select></label>
+<label>Loan type<select name="loan_type" required><option value="">Select type</option><option>Short term</option><option>Medium term</option><option>Long term</option></select></label>
+<label>Principal amount (₹)<input name="principal" type="number" min="0.01" step="0.01" required></label>
+<label>Annual interest rate (%)<input name="rate" type="number" min="0" max="100" step="0.01" required></label>
+<label>Term (months)<input name="months" type="number" min="1" max="600" step="1" required></label>
+<div><button class="button primary" type="submit">＋ Save loan draft</button></div>
+</form></section>
+<section class="panel"><div class="panel-heading"><div><h3>Loan list</h3><p>All entries are drafts; no balances are changed.</p></div></div><div class="table-wrap"><table><thead><tr><th>Loan ID</th><th>Member</th><th>Type</th><th>Principal</th><th>Rate</th><th>Term</th><th>Status</th></tr></thead><tbody>{% for x in loans %}<tr><td class="mono">{{ x.loan_id }}</td><td>{{ x.member_id }} — {{ x.member_name }}</td><td>{{ x.loan_type }}</td><td class="number-cell">₹{{ x.principal }}</td><td>{{ x.rate }}%</td><td>{{ x.months }} months</td><td><span class="tag planned">{{ x.status }}</span></td></tr>{% else %}<tr><td colspan="7" class="data-empty">No demo loans added yet.</td></tr>{% endfor %}</tbody></table></div></section>
+{% endblock %}
