@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | SocietyDesk{% endblock %}
+{% block page_heading %}Dashboard{% endblock %}
+{% block content %}
+<section class="welcome">
+  <div><p class="eyebrow light">OVERVIEW</p><h2>Good day, Society Team</h2><p>Manage member records now. Additional modules will be built in stages.</p></div>
+  <div class="welcome-icon">▦</div>
+</section>
+<div class="notice"><strong>Development mode:</strong> this version stores demo member data in memory. Records reset when the app restarts. No real financial transactions are supported yet.</div>
+<section class="stat-grid">
+  <article class="stat-card"><div class="stat-top"><span class="stat-label">Members in demo list</span><span class="stat-icon blue">♙</span></div><div class="stat-value">{{ member_count }}</div><div class="stat-note">Demo data only</div></article>
+  <article class="stat-card"><div class="stat-top"><span class="stat-label">Loans</span><span class="stat-icon purple">₹</span></div><div class="stat-value">—</div><div class="stat-note">Module not implemented</div></article>
+  <article class="stat-card"><div class="stat-top"><span class="stat-label">Monthly recovery</span><span class="stat-icon green">⇄</span></div><div class="stat-value">—</div><div class="stat-note">Module not implemented</div></article>
+  <article class="stat-card"><div class="stat-top"><span class="stat-label">Reports</span><span class="stat-icon amber">▤</span></div><div class="stat-value">—</div><div class="stat-note">Module not implemented</div></article>
+</section>
+<section class="panel">
+  <div class="panel-heading"><div><h3>Start with members</h3><p>Register and search demo member records.</p></div><a class="button primary" href="{{ url_for('member_list') }}">Open Members →</a></div>
+  <div class="module-grid">
+    <div class="module-item"><span class="module-symbol">01</span><div><strong>Member master</strong><p>Available as a demo</p></div><span class="tag available">Starter</span></div>
+    <div class="module-item"><span class="module-symbol">02</span><div><strong>Loans & interest</strong><p>Rules need confirmation</p></div><span class="tag planned">Planned</span></div>
+    <div class="module-item"><span class="module-symbol">03</span><div><strong>Deposits & welfare funds</strong><p>Policies and rates to confirm</p></div><span class="tag planned">Planned</span></div>
+    <div class="module-item"><span class="module-symbol">04</span><div><strong>Accounting & audit</strong><p>Double-entry ledger required</p></div><span class="tag planned">Planned</span></div>
+  </div>
+</section>
+{% endblock %}
