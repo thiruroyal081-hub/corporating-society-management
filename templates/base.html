@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Cooperative Society{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">CS</span><span>Society<span class="brand-muted">Desk</span></span></div>
+    <p class="nav-label">WORKSPACE</p>
+    <a class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}" href="{{ url_for('dashboard') }}">▦ <span>Dashboard</span></a>
+    <a class="nav-link {% if request.endpoint == 'member_list' %}active{% endif %}" href="{{ url_for('member_list') }}">♙ <span>Members</span></a>
+    <div class="nav-link disabled" title="Planned module">₹ <span>Loans</span><small>Planned</small></div>
+    <div class="nav-link disabled" title="Planned module">▤ <span>Deposits & Funds</span><small>Planned</small></div>
+    <div class="nav-link disabled" title="Planned module">⇄ <span>Monthly Recovery</span><small>Planned</small></div>
+    <div class="nav-link disabled" title="Planned module">▥ <span>Accounting & Reports</span><small>Planned</small></div>
+    <div class="sidebar-bottom"><span class="status-dot"></span> Development environment</div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div><span class="eyebrow">COOPERATIVE SOCIETY MANAGEMENT</span><h1>{% block page_heading %}Dashboard{% endblock %}</h1></div>
+      <span class="environment-pill">DEMO MODE</span>
+    </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    <footer>SocietyDesk · Starter build · Do not use for live financial transactions</footer>
+  </main>
+</body>
+</html>
