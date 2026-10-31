@@ -1,21 +1,25 @@
-# Cooperative Society Management — Website Demo
+# Cooperative Society Management — Scope-Based Website Prototype
 
-This folder contains an interactive front-end prototype for understanding the proposed cooperative society workflow.
+A responsive visual prototype based on the Excel/VBA Cooperative Society Management project brief.
 
-## Open the demo
-Open [index.html](index.html) in a modern browser, or enable GitHub Pages for this repository and use the `website-demo` folder as the published site source only after configuring an appropriate Pages setup.
+## Modules represented
+- Dashboard and member overview
+- Members Master with nominee and membership status
+- Share Capital and Dividend illustration
+- Application, Admission and Election Fees
+- Short-, Medium- and Long-Term Loan management with sanction deduction calculator
+- Thrift, RD and FD deposit interest illustration
+- Benevolent Fund and Family Welfare Fund policy panels and contribution entry
+- Monthly Recovery single-entry form with module-wise allocations
+- Daily Demand & Recovery report
+- Day Book and Cash Book
+- Trial Balance, Profit & Loss and Audit report checklist
+- Member Search
 
-## Included screens
-- Dashboard
-- Members Master
-- Share Capital
-- Loan interest calculator
-- Thrift / RD / FD sample balances
-- Benevolent and Family Welfare Funds
-- Monthly Recovery sample entry
-- Reports checklist
+## Open
+Open `index.html` in a modern browser. This can also be published using GitHub Pages after enabling Pages for the repository.
 
-## Important limitations
-This is a learning/demo prototype only. It uses fictional sample data and browser memory. It does not have a backend database, authentication, backups, audit logs, double-entry accounting, or production-ready financial calculations. Do not enter real member or financial data.
+## Important
+This is a front-end demonstration, not a production accounting system. It uses fictional sample figures and temporary in-browser state. It has no database, secure login, audit trail, backup, full interest schedules, or balanced double-entry posting. Some report values are deliberately marked illustrative and must not be used as real accounts.
 
-The original client requirement is daily operation in Excel. This website is a visual prototype, not a replacement for the agreed Excel deliverable unless the client explicitly changes the scope.
+The original brief requests an Excel/VBA automation system. Unless the client formally changes the scope, the production deliverable should remain a macro-enabled Windows Excel workbook (.xlsm), with this website serving as a visual prototype for requirements review.
