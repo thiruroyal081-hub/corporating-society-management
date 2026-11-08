@@ -1,60 +1,29 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cooperative Banking | Society Management</title>
+<title>Cooperative Society ERP | Professional Management</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0"></script>
 <style>
 :root{font-family:Inter,system-ui,Arial;color:#17243a;background:#f3f6fb;--navy:#132b49;--blue:#2563c7;--line:#e4eaf2;--muted:#718096}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}.layout{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.side{background:var(--navy);color:#e7effa;padding:22px 14px}.brand{font-weight:800;letter-spacing:.5px;padding:8px 10px 24px;border-bottom:1px solid #ffffff22}.brand small{display:block;color:#9eb1ca;font-size:10px;letter-spacing:1.5px;margin-top:4px}.nav{margin-top:18px}.nav button{display:block;width:100%;text-align:left;background:transparent;color:#c9d7e8;border:0;padding:11px 12px;border-radius:8px;cursor:pointer;margin:3px 0}.nav button.active,.nav button:hover{background:#294b73;color:white}.main{min-width:0}.top{background:white;border-bottom:1px solid var(--line);padding:17px 28px;display:flex;justify-content:space-between;align-items:center}.wrap{padding:26px;max-width:1450px;margin:auto}.page{display:none}.page.active{display:block}h1{font-size:25px;margin:0 0 6px}.muted{color:var(--muted);font-size:12px}.grid{display:grid;gap:14px}.stats{grid-template-columns:repeat(4,1fr);margin:20px 0}.stat,.card{background:white;border:1px solid var(--line);border-radius:13px;padding:18px;box-shadow:0 3px 12px #1c31500a}.stat small{color:var(--muted)}.stat b{display:block;font-size:25px;margin-top:9px}.card{margin:14px 0}.card h3{font-size:14px;margin:0 0 14px}.two{grid-template-columns:1fr 1fr}.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field label{display:block;font-size:11px;font-weight:700;color:#5a687a;margin-bottom:5px}.field input,.field select{width:100%;border:1px solid #d7e0eb;border-radius:8px;padding:10px;background:#fff}.span{grid-column:1/-1}.btn{border:0;background:var(--blue);color:white;padding:10px 15px;border-radius:8px;cursor:pointer;font-weight:700}.btn.secondary{background:#eaf1fb;color:#254c83}.btn:disabled{opacity:.5}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);font-size:12px}th{color:var(--muted);font-size:10px;text-transform:uppercase}.pill{border-radius:30px;background:#e9f7ef;color:#18764e;padding:4px 8px;font-size:10px}.alert{padding:12px 14px;border-radius:9px;background:#fff7e6;color:#76550d;font-size:12px;margin:14px 0}.hidden{display:none!important}.login{max-width:410px;margin:10vh auto;background:white;padding:28px;border:1px solid var(--line);border-radius:15px}.login h1{font-size:22px;margin-bottom:18px}.notice{font-size:11px;color:#7c5a11;background:#fff8e7;border:1px solid #f0dfa9;border-radius:9px;padding:11px;margin:12px 0}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.side{padding:10px}.brand{padding:6px 8px 12px}.nav{display:flex;overflow:auto;margin:8px 0 0;gap:4px}.nav button{white-space:nowrap;width:auto}.wrap{padding:15px}.stats{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
 @media(max-width:520px){.form{grid-template-columns:1fr}.span{grid-column:auto}.stats{grid-template-columns:1fr 1fr}.top{padding:14px}}
-
-/* Professional cooperative banking interface */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
-:root{font-family:'DM Sans',system-ui,sans-serif;color:#17263c;background:#f4f7fb;--navy:#102b46;--blue:#176b87;--line:#e6edf3;--muted:#718196;--gold:#c49a52}
-body{background:#f4f7fb;color:#17263c;letter-spacing:-.01em}
-.layout{grid-template-columns:264px minmax(0,1fr);min-height:100vh}
-.side{background:linear-gradient(180deg,#102b46 0%,#173c5b 100%);padding:25px 17px;box-shadow:5px 0 24px #102b4612}
-.brand{font:800 16px Manrope,sans-serif;letter-spacing:.06em;color:#fff;padding:8px 12px 25px;border-bottom:1px solid #ffffff20}
-.brand:before{content:'✦';display:inline-grid;place-items:center;width:34px;height:34px;border:1px solid #c49a52;border-radius:10px;color:#e7c47f;margin-right:10px;font-size:17px;vertical-align:middle}
-.brand small{margin:8px 0 0 45px;color:#a9bfd0;font-size:9px;letter-spacing:.2em}
-.nav{margin-top:24px}.nav:before{content:'WORKSPACE';display:block;color:#8da8bd;font-size:9px;font-weight:700;letter-spacing:.18em;padding:0 13px 10px}
-.nav button{display:flex;align-items:center;gap:12px;width:100%;color:#c3d3df;padding:12px 14px;border-radius:9px;margin:4px 0;font-size:13px;font-weight:600;transition:.18s}
-.nav button:before{content:'•';font-size:19px;line-height:10px;color:#8ba9bf}
-.nav button.active,.nav button:hover{background:#ffffff16;color:#fff;box-shadow:inset 3px 0 #d2ad6c}
-.main{min-width:0}.top{height:76px;background:#fff;border-bottom:1px solid var(--line);padding:0 34px;box-shadow:0 2px 12px #102b4606}
-#pageTitle{font:700 15px Manrope,sans-serif;color:#18334e}
-#who{font-size:11px;margin-right:12px}
-.wrap{padding:32px 36px;max-width:1560px}
-h1{font:800 27px Manrope,sans-serif;letter-spacing:-.04em;color:#17324d;margin:0 0 7px}
-h1:after{content:'';display:block;width:36px;height:3px;background:var(--gold);border-radius:5px;margin-top:12px}
-.muted{color:#78899b;font-size:12px;line-height:1.65}
-.grid{gap:18px}.stats{margin:24px 0}
-.stat,.card{background:#fff;border:1px solid #e7edf3;border-radius:14px;padding:21px;box-shadow:0 5px 22px #17324d08}
-.stat{position:relative;overflow:hidden;min-height:112px}
-.stat:after{content:'';position:absolute;right:-20px;top:-25px;width:85px;height:85px;border:14px solid #edf4f7;border-radius:50%}
-.stat small{font-size:11px;font-weight:700;letter-spacing:.04em;color:#718399}
-.stat b{font:800 28px Manrope,sans-serif;color:#173b59;margin-top:12px}
-.card{margin:17px 0}.card h3{font:700 14px Manrope,sans-serif;color:#1b3b57;margin:0 0 17px}
-.field label{font-size:10px;letter-spacing:.055em;text-transform:uppercase;color:#60748a;font-weight:700}
-.field input,.field select{border:1px solid #dce5ed;border-radius:8px;padding:11px 12px;color:#21364c;background:#fbfdff;font-size:12px;outline:none;transition:.15s}
-.field input:focus,.field select:focus{border-color:#3985a1;box-shadow:0 0 0 3px #3985a11a;background:white}
-.btn{background:#176b87;border-radius:8px;padding:11px 17px;font-size:12px;box-shadow:0 4px 10px #176b8722}
-.btn:hover{background:#12556e}.btn.secondary{background:#edf3f7;color:#254b65;box-shadow:none}
-table{border-collapse:separate;border-spacing:0}th{background:#f6f9fb;color:#6b7f93;font-size:9px;letter-spacing:.09em;padding:13px}td{color:#31475d;font-size:11px;padding:13px}
-tbody tr:hover{background:#f8fbfd}.pill{font-weight:700}
-.notice{border:1px solid #e9d9b8;background:#fffaf1;color:#765c31;border-radius:10px;padding:12px 15px;line-height:1.6}
-.login{max-width:430px;margin:9vh auto;background:white;padding:36px;border:1px solid #e5ebf1;border-radius:18px;box-shadow:0 18px 60px #16324d12}
-.login:before{content:'✦  CO-OPERATIVE BANKING';display:block;font:800 11px Manrope,sans-serif;letter-spacing:.16em;color:#176b87;margin-bottom:25px}
-.login h1{font-size:24px}.login h1:after{display:none}
-.login form{gap:16px}.login .btn{margin-top:6px}
-.page{animation:fadeIn .22s ease}@keyframes fadeIn{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:none}}
-#dashboard .card{min-height:120px}
-@media(max-width:850px){.layout{grid-template-columns:1fr}.side{padding:12px 14px}.brand{padding:5px 8px 10px}.brand small{margin-left:45px}.nav{display:flex;overflow:auto;margin:10px 0 0;gap:4px}.nav:before{display:none}.nav button{white-space:nowrap;width:auto;flex:0 0 auto;padding:10px}.nav button:before{display:none}.wrap{padding:20px}.top{height:auto;min-height:64px;padding:12px 18px}}
-@media(max-width:520px){.form{grid-template-columns:1fr}.span{grid-column:auto}.stats{grid-template-columns:1fr 1fr}.top{align-items:flex-start;gap:8px;flex-wrap:wrap}.wrap{padding:14px}.login{margin:7vh 14px;padding:25px}}
+</style><style>
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#17263c;background:#f4f7fb;--navy:#102746;--blue:#1769aa;--line:#e5ebf2;--muted:#75849a}
+body{background:#f4f7fb;color:#17263c}.layout{grid-template-columns:260px minmax(0,1fr);min-height:100vh}
+.side{background:linear-gradient(180deg,#102b4d 0%,#0b1f38 100%);padding:26px 16px;color:#fff;box-shadow:5px 0 22px #0c24400c}
+.brand{font-size:16px;letter-spacing:1px;padding:8px 12px 25px;border-bottom:1px solid #ffffff20}.brand:before{content:"";display:inline-block;width:30px;height:30px;vertical-align:middle;margin-right:10px;border-radius:9px;background:linear-gradient(135deg,#45b6e8,#1e70bc);box-shadow:inset 0 0 0 1px #ffffff50}.brand small{padding-left:42px;font-size:9px;color:#91abc8;letter-spacing:2px}
+.nav{margin-top:25px}.nav button{color:#c0d0e2;padding:12px 14px;border-radius:9px;font-size:13px;font-weight:600;transition:.2s}.nav button.active,.nav button:hover{background:#ffffff17;color:#fff;box-shadow:inset 3px 0 #54b8ec}
+.main{min-width:0}.top{height:72px;padding:0 34px;background:#fff;border-bottom:1px solid #e7edf4;position:sticky;top:0;z-index:4}.top>b{font-size:15px;color:#1c3553}.wrap{padding:32px 36px;max-width:1500px}.page h1{font-size:27px;letter-spacing:-.6px;color:#172d49}.page>p.muted{font-size:13px;margin-top:4px}
+.stats{gap:18px;margin:24px 0}.stat,.card{border:1px solid #e6ecf3;border-radius:14px;background:#fff;box-shadow:0 5px 20px #1b35500a}.stat{padding:21px 22px;position:relative;overflow:hidden}.stat:after{content:"";position:absolute;width:65px;height:65px;border-radius:50%;right:-20px;top:-20px;background:#edf5fc}.stat small{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#77869a}.stat b{font-size:28px;color:#183b61;letter-spacing:-.6px;margin-top:13px}
+.card{padding:23px;margin:18px 0}.card h3{font-size:14px;color:#203c5c;margin-bottom:18px}.field label{font-size:11px;text-transform:uppercase;letter-spacing:.45px;color:#65758b}.field input,.field select{border:1px solid #dce5ef;border-radius:8px;padding:11px 12px;color:#20354e;background:#fbfdff;outline:none}.field input:focus,.field select:focus{border-color:#3688c9;box-shadow:0 0 0 3px #3688c91a}
+.btn{background:#1769aa;border-radius:8px;padding:11px 17px;box-shadow:0 3px 8px #1769aa20}.btn:hover{background:#10588f}.btn.secondary{background:#edf3f9;color:#2a527a;box-shadow:none}
+table{border-collapse:separate;border-spacing:0}th{background:#f6f9fc;color:#6b7c91;font-size:10px;letter-spacing:.6px}th:first-child{border-radius:7px 0 0 7px}th:last-child{border-radius:0 7px 7px 0}td{color:#344a63}tbody tr:hover{background:#f8fbfe}
+.notice{background:#fff9e9;border:1px solid #f0dfb5;color:#75591d;border-radius:9px;line-height:1.6}.pill{font-weight:700}.login{margin:10vh auto;box-shadow:0 18px 60px #19365316;border:1px solid #e6edf4;border-radius:18px;padding:34px}.login h1{color:#173b60}.login .btn{width:100%}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.side{padding:13px}.brand{padding:6px 8px 12px}.brand small{display:inline;padding-left:0}.nav{margin:8px 0 0}.wrap{padding:18px}.top{padding:0 18px}.stats{gap:10px}}
 </style></head><body>
-<div id="login" class="login"><h1>Staff Sign In</h1><p class="muted">Secure staff sign-in</p><form id="loginForm" class="grid"><div class="field"><label>Email</label><input id="email" type="email" required></div><div class="field"><label>Password</label><input id="password" type="password" required></div><button class="btn">Sign in</button></form><p id="loginMsg" class="muted"></p></div>
-<div id="app" class="layout hidden"><aside class="side"><div class="brand">CO-OPERATIVE BANK<small>SOCIETY MANAGEMENT SYSTEM</small></div><nav class="nav">
+<div id="login" class="login"><h1>Cooperative Society ERP</h1><p class="muted">Secure staff sign-in</p><form id="loginForm" class="grid"><div class="field"><label>Email</label><input id="email" type="email" required></div><div class="field"><label>Password</label><input id="password" type="password" required></div><button class="btn">Sign in</button></form><p id="loginMsg" class="muted"></p></div>
+<div id="app" class="layout hidden"><aside class="side"><div class="brand">CO-OPERATIVE ERP<small>SOCIETY MANAGEMENT</small></div><nav class="nav">
 <button class="active" data-page="dashboard">▦ Dashboard</button><button data-page="members">♙ Members</button><button data-page="loans">↗ Loans</button><button data-page="deposits">▤ Thrift / RD / FD</button><button data-page="interest">◷ Interest posting</button><button data-page="welfare">♡ Welfare funds</button><button data-page="recovery">⇄ Monthly recovery</button><button data-page="vouchers">₹ Vouchers</button><button data-page="reports">▥ Reports</button>
 </nav></aside><main class="main"><header class="top"><b id="pageTitle">Dashboard</b><div><span id="who" class="muted"></span> <button id="logout" class="btn secondary">Sign out</button></div></header><div class="wrap">
 <div class="notice">Live database mode. Only authenticated, active staff with a configured society profile can access records. Rates, benefit rules, interest methods and accounting mappings must be approved by the society before production use. Do not enter live financial data until those rules are validated.</div>
