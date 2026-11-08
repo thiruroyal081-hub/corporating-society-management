@@ -124,8 +124,9 @@ async function stageWorkbook(file){
   const out=[];
   for(let ri=0;ri<rows.length;ri++){
    const vals=rows[ri]||[];
-   if(!vals.some(v=>v!==null&&v!==undefined&&String(v).trim()!==""))continue;
    let obj={};vals.forEach((v,ci)=>{if(v!==null&&v!==undefined&&String(v)!=="")obj["COL_"+(ci+1)]=v});
+   const range=XLSX.utils.decode_range(sheet["!ref"]||"A1:A1");
+   for(let ci=0;ci<=range.e.c;ci++){const addr=XLSX.utils.encode_cell({r:ri,c:ci});const cell=sheet[addr];if(cell&&cell.f)obj["FORMULA_COL_"+(ci+1)]=cell.f;}
    const textvals=vals.map(v=>String(v??"").trim());
    const memberIdx=textvals.findIndex(v=>/^membership\s*no\.?$/i.test(v));
    const empIdx=textvals.findIndex(v=>/^emp\.?\s*no\.?$/i.test(v));
